@@ -64,25 +64,18 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE GREY; do
 done
 PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
-### Docker prompt
-# The theme promt can be a whale emoji (http://emojipedia.org/spouting-whale/) or a text
-DOCKER_THEME_PROMPT="🐳%{$fg[blue]%}"
-
-DOCKER_LOCAL_COLOR="green"
-DOCKER_REMOTE_COLOR="red"
-
 # Modify Git prompt
 ZSH_THEME_GIT_PROMPT_PREFIX="🐙 %{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY=""
-ZSH_THEME_GIT_PROMPT_CLEAN=""
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ✔"
 
 ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%} %{%G✚%}"
 ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[blue]%} %{%G✹%}"
 ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%} %{%G✖%}"
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%} %{%G➜%}"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} %{%G═%}"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} %{%G✭%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} %{%G?%}"
 
 # Use extended characters to look nicer if supported.
 if [[ "${langinfo[CODESET]}" = UTF-8 ]]; then
@@ -111,10 +104,10 @@ fi
 # Decide if we need to set titlebar text.
 case $TERM in
   xterm*)
-    PR_TITLEBAR=$'%{\e]0;%(!.-=[ROOT]=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\a%}'
+    PR_TITLEBAR=$'%{\e]0;%(!.-=[ROOT]=- | .)ocean - %n@%m:%~ | ${COLUMNS}x${LINES} | %y\a%}'
     ;;
   screen)
-    PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\e\\%}'
+    PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)ocean - %n@%m:%~ | ${COLUMNS}x${LINES} | %y\e\\%}'
     ;;
   *)
     PR_TITLEBAR=""
@@ -134,7 +127,7 @@ ${PR_CYAN}${PR_ULCORNER}${PR_HBAR}${PR_BLUE}\
 ⦗${PR_GREEN}$(pwd_base)${PR_BLUE}⦘\
 $(ruby_prompt_info)${PR_CYAN}${PR_HBAR}${PR_HBAR}${PR_HBAR}${PR_BLUE}\
 ⟅${PR_CYAN}%(!.%SROOT%s.%n)${PR_WHITE}@${PR_GREEN}%m${PR_BLUE}⟆\
-${PR_CYAN}${PR_HBAR}${PR_HBAR}${PR_HBAR}${PR_BLUE}(${PR_YELLOW}%D{%a,%b%d}${PR_BLUE})\
+${PR_CYAN}${PR_HBAR}${PR_HBAR}${PR_HBAR}${PR_BLUE}(${PR_YELLOW}%D{%a,%b-%d}${PR_BLUE})\
 ${PR_CYAN}${PR_HBAR}${PR_HBAR}$(day_to_night_icon)
 ${PR_VBAR}\
 
