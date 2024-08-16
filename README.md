@@ -5,6 +5,7 @@
 This Zsh theme provides a visually appealing and functional command prompt with the features:
 
 - **Docker Indicator**: Displays a whale emoji `🐳` if running inside Docker, indicated by the global variable `RUNNING_IN_DOCKER` set to `"true"`.
+- **Git Indicator**: Displays the prefix `🐙` to indicate the presence of a Git repository, with the emoji changing based on repository status.
 - **Git Status**: Shows Git repository status with custom icons and colors. 
 	- **Clean**: ✔ (Green)
 	- **Added**: ✚ (Green)
@@ -22,7 +23,6 @@ This Zsh theme provides a visually appealing and functional command prompt with 
 	- **🌖** Waning Gibbous: 15:00 - 18:00
 	- **🌗** Last Quarter: 18:00 - 21:00
 	- **🌘** Waning Crescent: 21:00 - 00:00
-- **Dynamic Emoji**: Displays the prefix `🐙` to indicate the presence of a Git repository, with the emoji changing based on repository status.
 - **Weekday and Date Format**: Displays the current weekday, month, and day in `Weekday,Month-Day` format.
 
 ## Installation
